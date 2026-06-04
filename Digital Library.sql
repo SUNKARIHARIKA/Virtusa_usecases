@@ -1,20 +1,20 @@
---Create a DataBase
+-- Create a DataBase
 CREATE DATABASE Digital_Library;
 USE Digital_Library;
---Create  Table Books
+-- Create  Table Books
 CREATE TABLE Books(
 Book_id INT PRIMARY KEY,
 Title VARCHAR(40) NOT NULL,
 Author VARCHAR(40),
 ISBN_Num VARCHAR(40) UNIQUE,
 Category VARCHAR(30) NOT NULL);
---Create Table Students
+-- Create Table Students
 CREATE TABLE Students(
 Stud_id INT PRIMARY KEY,
 Stud_name VARCHAR(40) NOT NULL,
 Gender VARCHAR(10),
 Age INT);
---Create Table Issued_Books
+-- Create Table Issued_Books
 CREATE TABLE Issued_Books(
 Issue_id INT PRIMARY KEY,
 Stud_id INT,
@@ -23,7 +23,7 @@ Book_id INT,
 FOREIGN KEY(Book_id) REFERENCES Books(Book_id),
 Issue_date DATE,
 Return_date DATE);
---Insert into Books Table
+-- Insert into Books Table
 INSERT INTO Books (Book_id, Title, Author, ISBN_Num, Category) VALUES
 (1, 'Database Systems', 'Navathe', 'ISBN001', 'Science'),
 (2, 'Operating System Concepts', 'Silberschatz', 'ISBN002', 'Science'),
@@ -35,7 +35,7 @@ INSERT INTO Books (Book_id, Title, Author, ISBN_Num, Category) VALUES
 (8, 'Harry Potter', 'J.K. Rowling', 'ISBN008', 'Fiction'),
 (9, 'Indian Economy', 'Ramesh Singh', 'ISBN009', 'Economics'),
 (10, 'Artificial Intelligence', 'Stuart Russell', 'ISBN010', 'Technology');
---Insert into Students Table
+-- Insert into Students Table
 INSERT INTO Students ( Stud_id, Stud_name, Gender, Age) VALUES
 (100, 'Harika Sunkari', 'Female', 21),
 (102, 'Meghana Sunkari', 'Female', 23),
@@ -47,7 +47,7 @@ INSERT INTO Students ( Stud_id, Stud_name, Gender, Age) VALUES
 (108, 'Rohit Sharma', 'Male', 19),
 (109, 'Dhanush', 'Male', 18),
 (110, 'Dedipya', 'Female', 21);
---Insert into Issued_books Table
+-- Insert into Issued_books Table
 INSERT INTO Issued_Books( Issue_id, Stud_id, Book_id, Issue_date, Return_date) VALUES
 (201, 100, 1, '2026-03-01', NULL),
 (202, 102, 2, '2026-03-05', NULL),
@@ -66,13 +66,13 @@ SELECT * FROM Books;
 SELECT * FROM Students;
 SELECT * FROM Issued_Books;
 -- Overdue Logic
---To find all students who haven't returned a book where the IssueDate was more than 14 days ago and ReturnDate is NULL
+-- To find all students who haven't returned a book where the IssueDate was more than 14 days ago and ReturnDate is NULL
 SELECT s.Stud_id, s.Stud_name From
 Students s JOIN Issued_Books i 
 ON s.Stud_id = i.Stud_id
 WHERE (i.Issue_date <= CURRENT_DATE - INTERVAL 14 DAY) AND (i.Return_date IS NULL);
 -- Popularity Index
---Use COUNT and GROUP BY on the Category column to show which genre (e.g., Fiction, Science, History) is borrowed the most.
+-- Use COUNT and GROUP BY on the Category column to show which genre (e.g., Fiction, Science, History) is borrowed the most.
 SELECT COUNT(i.Book_id) AS Number_of_books, b.Category 
 FROM Books b JOIN Issued_Books i 
 ON b.Book_id = i.Book_id 
@@ -80,7 +80,7 @@ GROUP BY b.Category
 ORDER BY Number_of_books DESC
 LIMIT 1;
 -- Data Cleanup
---Write a DELETE or UPDATE statement to remove student records who haven't borrowed a book in over 3 years (Inactive accounts).
+-- Write a DELETE or UPDATE statement to remove student records who haven't borrowed a book in over 3 years (Inactive accounts).
 DELETE FROM Students
 WHERE Stud_id IN (
     SELECT Stud_id
