@@ -1,0 +1,7 @@
+User1: this is a *** example http://example.com/page1
+User2: I *** this *** system https://site.com/home
+User3: hello everyone this is a clean post http://test.com
+User4: *** behavior should be avoided https://security.com/login
+User5: I really enjoy this platform no issues here
+User6: *** content detected in this message http://danger.com
+User7: learning python is fun and useful

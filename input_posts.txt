@@ -1,0 +1,7 @@
+User1: this is a bad example http://example.com/page1
+User2: I hate this toxic system https://site.com/home
+User3: hello everyone this is a clean post http://test.com
+User4: bad behavior should be avoided https://security.com/login
+User5: I really enjoy this platform no issues here
+User6: toxic content detected in this message http://danger.com
+User7: learning python is fun and useful
