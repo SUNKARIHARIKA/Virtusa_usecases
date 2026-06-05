@@ -1,3 +1,14 @@
+/*
+Business Case: A local community college has a database of books and student borrows. They are
+struggling to track "Overdue" books and want to know which categories of books are most popular
+to decide what to buy next. Problem Statement
+Create a relational system to track book loans and generate a "Penalty Report" for books not
+returned within 14 days. Student Tasks:
+1. Table Creation: Create Books, Students, and IssuedBooks (with IssueDate and ReturnDate). 2. Overdue Logic: Write a query to find all students who haven't returned a book where the
+IssueDate was more than 14 days ago and ReturnDate is NULL. 3. Popularity Index: Use COUNT and GROUP BY on the Category column to show which genre
+(e.g., Fiction, Science, History) is borrowed the most. 4. Data Cleanup: Write a DELETE or UPDATE statement to remove student records who haven't
+borrowed a book in over 3 years (Inactive accounts). Deliverable: A .sql file containing the DDL (table creation) and the analytical queries
+*/
 -- Create a DataBase
 CREATE DATABASE Digital_Library;
 USE Digital_Library;
